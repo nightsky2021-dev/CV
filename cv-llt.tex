@@ -1,0 +1,144 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Enhanced CV Template — Mohammad Amirfattahi
+% Based on curve.cls by LianTze Lim
+% Updated for stability, readability, and left-aligned publication years
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[a4paper,skipsamekey,11pt,english]{curve}
+
+%---------------------------------------------
+%  BASIC LANGUAGE AND BIBLIOGRAPHY
+%---------------------------------------------
+\usepackage[english]{babel}
+\usepackage{csquotes}
+\PassOptionsToPackage{style=ieee,sorting=ydnt,uniquename=init,defernumbers=true,maxbibnames=10}{biblatex}
+\usepackage{settings}
+\DefineBibliographyStrings{english}{url={\textsc{url}}}
+\addbibresource{own-bib.bib}
+
+% Highlight your name in all publications
+\mynames{Amirfattahi/Mohammad}
+
+%---------------------------------------------
+%  FONTS AND TYPOGRAPHY
+%---------------------------------------------
+\ifxetexorluatex
+  \usepackage{fontspec}
+  \usepackage[p,osf,swashQ]{cochineal}
+  \usepackage[medium,bold]{cabin}
+  \usepackage[varqu,varl,scale=0.9]{zi4}
+\else
+  \usepackage[T1]{fontenc}
+  \usepackage[p,osf,swashQ]{cochineal}
+  \usepackage{cabin}
+  \usepackage[varqu,varl,scale=0.9]{zi4}
+\fi
+
+%---------------------------------------------
+%  PAGE GEOMETRY AND SPACING
+%---------------------------------------------
+\geometry{left=1.5cm,right=1.5cm,top=1cm,bottom=1cm}
+\setlength{\parskip}{0.2em}
+\setlength{\parindent}{0pt}
+
+%---------------------------------------------
+%  ICONS, LINKS, AND URL WRAPPING
+%---------------------------------------------
+\usepackage{fontawesome5}
+\usepackage{hyperref}
+\usepackage{xurl} % allows line breaks in URLs
+\hypersetup{
+  colorlinks=true,
+  linkcolor=[HTML]{0056A3},
+  urlcolor=[HTML]{0056A3},
+  citecolor=[HTML]{0056A3}
+}
+
+%---------------------------------------------
+%  COMMENT ENVIRONMENTS (Fixes undefined 'fullonly')
+%---------------------------------------------
+\usepackage{comment}
+\includecomment{fullonly}
+% \excludecomment{fullonly} % uncomment to hide photo
+
+%---------------------------------------------
+%  HEADER CONFIGURATION
+%---------------------------------------------
+\leftheader{%
+  {\Huge\bfseries\sffamily Mohammad Amirfattahi} \\[1ex]
+  \makefield{\faEnvelope[regular]}{\href{mailto:mohammad.amirfattahi95@gmail.com}{mohammad.amirfattahi95@gmail.com}} \\[0.4ex]
+  \makefield{\faPhone}{\texttt{(+98) 935 9907896}} \\[0.4ex]
+  % Optional additions:
+  % \makefield{\faLinkedin}{\href{https://www.linkedin.com/in/mohammad-amirfattahi}{linkedin.com/in/mohammad-amirfattahi}} \\[0.4ex]
+  % \makefield{\faMapMarker[solid]}{\texttt{Isfahan, Iran}}
+}
+
+\rightheader{~}
+
+\begin{fullonly}
+  \photo[r]{photo2}
+  \photoscale{0.15}
+\end{fullonly}
+
+\title{Curriculum Vitae}
+
+%---------------------------------------------
+%  CUSTOM PUBLICATION LAYOUT (YEAR LEFT-ALIGNED)
+%---------------------------------------------
+\renewbibmacro*{date}{%
+  \printfield{year}%
+}
+
+\defbibenvironment{bibliography}
+  {\list
+     {\printfield{year}}
+     {
+      \setlength{\leftmargin}{1.8cm}%
+      \setlength{\labelwidth}{1.5cm}%
+      \setlength{\labelsep}{0.3cm}%
+      \setlength{\itemindent}{0pt}%
+      \setlength{\itemsep}{0.8ex}%
+      \setlength{\parsep}{0pt}%
+      \renewcommand*{\makelabel}[1]{\textbf{##1}}%
+     }}
+  {\endlist}
+  {\item}
+
+% Make title italic, journal bold, DOI clickable
+\DeclareFieldFormat[article]{title}{\textit{#1}}
+\DeclareFieldFormat[article]{journaltitle}{\textbf{#1}}
+\DeclareFieldFormat{doi}{%
+  \mkbibacro{DOI}\addcolon\space
+  \href{https://doi.org/#1}{\nolinkurl{#1}}}
+
+%---------------------------------------------
+%  DOCUMENT BODY
+%---------------------------------------------
+\begin{document}
+\makeheaders[c]
+\vspace{-0.3cm}
+
+\makerubric{education}
+\vspace{-0.3cm}
+
+\makerubric{Research Publications}
+\vspace{-0.3cm}
+
+\makerubric{employment}
+\vspace{-0.3cm}
+
+\makerubric{honors}
+\vspace{-0.3cm}
+
+\makerubric{certificates}
+\vspace{-0.3cm}
+
+\makerubric{skills}
+\vspace{-0.3cm}
+
+\makerubric{Research-int}
+\vspace{-0.3cm}
+
+\makerubric{rel-academic-proj}
+
+\end{document}
